@@ -8,47 +8,47 @@ namespace L02P02_2021AB601_2021GS602.Controllers
 {
     public class LibreriaController : Controller
     {
-        //private readonly equiposDbContext _equiposDbContext;
+        private readonly libreriaDbContext _libreriaDbContext;
 
-        //public EquiposController(equiposDbContext equiposDbContext)
-        //{
-        //    _equiposDbContext = equiposDbContext;
-        //}
+        public LibreriaController(libreriaDbContext equiposDbContext)
+        {
+            _libreriaDbContext = equiposDbContext;
+        }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        ////Función para guardar equipos
-        //public IActionResult CrearEquipos(equipos nuevoLibro)
-        //{
-        //    _equiposDbContext.Add(nuevoLibro);
-        //    _equiposDbContext.SaveChanges();
+        //Función para guardar equipos
+        public IActionResult CrearEquipos(libreriaTables nuevoLibro)
+        {
+            _libreriaDbContext.Add(nuevoLibro);
+            _libreriaDbContext.SaveChanges();
 
-        //    return RedirectToAction("Index");
+            return RedirectToAction("Index");
 
-        //}
+        }
 
-        //////Metodo para eliminar
-        //[HttpPut]
-        //[Route("Eliminar/{id}")]
-        //public IActionResult EliminarCliente(int id)
-        //{
-        //    clientes? cliente = (from e in _clientesContexto.clientes
-        //                         where e.clienteId == id
-        //                         select e).FirstOrDefault();
+        ///Metodo para eliminar
+        [HttpPut]
+        [Route("Eliminar/{id}")]
+        public IActionResult EliminarCliente(int id)
+        {
+            Libros? libro = (from e in _libreriaDbContext.Libros
+                             where e.id == id
+                                 select e).FirstOrDefault();
 
-        //    if (cliente == null)
-        //    { return NotFound(); }
+            if (libro == null)
+            { return NotFound(); }
 
-        //    _clientesContexto.clientes.Attach(cliente);
-        //    _clientesContexto.clientes.Remove(cliente);
-        //    _clientesContexto.SaveChanges();
+            _libreriaDbContext.Libros.Attach(libro);
+            _libreriaDbContext.Libros.Remove(libro);
+            _libreriaDbContext.SaveChanges();
 
-        //    return Ok(cliente);
+            return Ok(libro);
 
-        //}
+        }
 
         //Guardar imagen del libro
         [HttpPost]
