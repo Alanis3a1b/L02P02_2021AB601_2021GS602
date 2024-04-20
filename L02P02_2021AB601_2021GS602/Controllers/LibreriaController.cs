@@ -17,6 +17,32 @@ namespace L02P02_2021AB601_2021GS602.Controllers
 
         public IActionResult Index()
         {
+
+            //Aquí estamos solicitando el listado de los equipos en la bd
+            var listadoDeLibros = (from e in _libreriaDbContext.Libros
+                                    join m in _libreriaDbContext.autores on e.id equals m.id
+                                    join n in _libreriaDbContext.categorias on e.id equals n.id
+                                    select new
+                                    {
+                                        nombre = e.nombre,
+                                        descripcion = e.descripcion,
+                                        precio = e.precio,
+                                        autor = m.autor,
+                                        categoria = n.categoria 
+
+                                    }).ToList();
+            ViewData["listadoLibros"] = listadoDeLibros;
+
+            //Aquí estamos invocando el listado de autores de la tabla autores
+            var listaDeAutores = (from m in _libreriaDbContext.autores
+                                 select m).ToList();
+            ViewData["listadoDeAutores"] = new SelectList(listaDeAutores, "id", "autor");
+
+            //Aquí listaremos el listado de tipos Categorìas o generos
+            var listaDeCategorias= (from m in _libreriaDbContext.categorias
+                                      select m).ToList();
+            ViewData["listadoDeCategorias"] = new SelectList(listaDeCategorias, "id", "categoria");
+
             return View();
         }
 
