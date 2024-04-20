@@ -60,7 +60,7 @@ namespace L02P02_2021AB601_2021GS602.Controllers
             //Configuramos la conexion hacia el FireBase
             string email = "alanis.alvarez@catolica.edu.sv";
             string clave = "Thewoomy1029";
-            string ruta = "gs://libreriaimagen-2d35c.appspot.com"; //Se ve en storage
+            string ruta = "libreriaimagen-2d35c.appspot.com"; //Se ve en storage
             string api_key = "AIzaSyDyGc5KurD4sx6eQ96mbZiQmDmyxXZuC3Y"; //Se ve en configuración
 
             //Esto es para poder autenticarse con el correo y contraseña
