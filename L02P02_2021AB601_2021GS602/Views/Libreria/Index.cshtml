@@ -10,16 +10,6 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-    <form asp-action="SubirArchivo" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="archivo">Seleccione el archivo a cargar</label>
-            <input type="file" class="form-control" id="archivo" name="archivo"></input>
-
-        </div>
-
-        <button type="submit" class="btn btn-primary mb-2">subir archivo </button>
-
-    </form>
 </div>-->
 
 <head>
@@ -101,8 +91,88 @@
     </style>
 </head>
 <body>
-    <section style="background-color: #4e5bf9; color: white;">
-        <img src="D:\P02\L02P02_2021AB601_2021GS602\Image\UNICAES_Logo.png" />
+    <div class="container" style="background-color: #4e5bf9; color: white;">
+        <src img="D:\P02\L02P02_2021AB601_2021GS602\Image\UNICAES_Logo.png" />
         <h2>CREACIÓN DE LIBROS</h2>
-    </section>
+    </div>
+    <div class="container d-flex">
+        <div class="conatiner col-5">
+            <div class="container">
+                <p>Nombre del Libro</p>
+                <input type="text" name="" value="" />
+            </div>
+            <div class="container">
+                <p>Descripción</p>
+                <input type="text" name="" value="" />
+            </div>
+            <div class="container d-flex">
+                <div class="container col-2">
+                    <p>Precio</p>
+                    <input type="text" name="" value="" />
+                </div>
+                <div class="container col-2">
+                    <p>Autor</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleccionar
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item">Autor1</a></li>
+                            <li><a class="dropdown-item">Autor1</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container col-2">
+                    <p>Categoría o Género</p>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleccionar
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item">Genero1</a></li>
+                            <li><a class="dropdown-item">Genero1</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="conatiner"><i class="bi bi-journal-plus"></i></div>
+            <div class="container">
+                <form asp-action="SubirArchivo" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="archivo">Seleccione el archivo a cargar</label>
+                        <input type="submit" class="form-control" id="archivo" name="archivo">Ningun archivo seleccionado</input>
+
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary mb-2">subir archivo </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del Libro</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Autor</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var libreriaTables in (IEnumerable<dynamic>)ViewData["listadoLibros"])
+                {
+                <td>@libreriaTables.nombre</td>
+                <td>@libreriaTables.descripcion</td>
+                <td>@libreriaTables.precio</td>
+                <td>@libreriaTables.autor</td>
+                <td>@libreriaTables.categoria</td>
+                }
+            </tbody>
+        </table>
+    </div>
 </body>
