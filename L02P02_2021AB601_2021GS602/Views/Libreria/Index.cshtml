@@ -3,10 +3,10 @@
 *@
 
 @{
-    ViewData["Title"] = "Cargar Archivos";
+    ViewData["Title"] = "CREACION DE LIBROS";
 }
 
-<div class="text-center">
+<!-- <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
@@ -20,4 +20,88 @@
         <button type="submit" class="btn btn-primary mb-2">subir archivo </button>
 
     </form>
-</div>
+</div>-->
+
+<head>
+    <style>
+        .container {
+            width: 100%;
+            margin: 100px auto;
+        }
+
+        .text-msg {
+            margin: 20px 0;
+            display: block;
+            clear: both;
+            text-align: justify;
+        }
+
+        .progressbar {
+            margin: 0;
+            padding: 0;
+            counter-reset: step;
+            clear: both;
+        }
+
+        .progressbar li {
+                list-style-type: none;
+                width: 25%;
+                float: left;
+                font-size: 12px;
+                position: relative;
+                text-align: center;
+                text-transform: uppercase;
+                color: #7d7d7d;
+        }
+
+                .progressbar li:before {
+                    width: 30px;
+                    height: 30px;
+                    content: counter(step);
+                    counter-increment: step;
+                    line-height: 30px;
+                    border: 2px solid #7d7d7d;
+                    display: block;
+                    text-align: center;
+                    margin: 0 auto 10px auto;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+
+                .progressbar li:after {
+                    width: 100%;
+                    height: 2px;
+                    content: "";
+                    position: absolute;
+                    background-color: #7d7d7d;
+                    top: 15px;
+                    left: -50%;
+                    z-index: -1;
+                }
+
+                .progressbar li:first-child:after {
+                    content: none;
+                }
+
+                .progressbar li.active {
+                    color: green;
+                    font-weight: bold;
+                    font-style: italic;
+                    text-decoration: underline;
+                }
+
+                .progressbar li.active:before {
+                        border-color: #55b776;
+                }
+
+                .progressbar li.active + li:after {
+                        background-color: #55b776;
+                }
+    </style>
+</head>
+<body>
+    <section style="background-color: #4e5bf9; color: white;">
+        <img src="D:\P02\L02P02_2021AB601_2021GS602\Image\UNICAES_Logo.png" />
+        <h2>CREACIÓN DE LIBROS</h2>
+    </section>
+</body>
