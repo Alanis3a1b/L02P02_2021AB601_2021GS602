@@ -19,7 +19,7 @@ namespace L02P02_2021AB601_2021GS602.Controllers
         {
 
             //Aquí estamos solicitando el listado de los equipos en la bd
-            var listadoDeLibros = (from e in _libreriaDbContext.Libros
+            var listadoDeLibros = (from e in _libreriaDbContext.libros
                                     join m in _libreriaDbContext.autores on e.id equals m.id
                                     join n in _libreriaDbContext.categorias on e.id equals n.id
                                     select new
@@ -61,15 +61,15 @@ namespace L02P02_2021AB601_2021GS602.Controllers
         [Route("Eliminar/{id}")]
         public IActionResult EliminarCliente(int id)
         {
-            Libros? libro = (from e in _libreriaDbContext.Libros
+            Libros? libro = (from e in _libreriaDbContext.libros
                              where e.id == id
                                  select e).FirstOrDefault();
 
             if (libro == null)
             { return NotFound(); }
 
-            _libreriaDbContext.Libros.Attach(libro);
-            _libreriaDbContext.Libros.Remove(libro);
+            _libreriaDbContext.libros.Attach(libro);
+            _libreriaDbContext.libros.Remove(libro);
             _libreriaDbContext.SaveChanges();
 
             return Ok(libro);
